@@ -21,4 +21,13 @@ class consultas extends CI_Model{
 		$query = $this -> db -> query($qry);
 		return $query;
 	}
+
+	function gentePorSuAño($año){
+		$qry = "SELECT starttime::timestamp::date, tripduration/60 AS duracion FROM bici.trip WHERE bici.trip.birthyear = '$año';";
+
+		$query = $this -> db -> query($qry);
+		return $query;
+
+
+	}
 }

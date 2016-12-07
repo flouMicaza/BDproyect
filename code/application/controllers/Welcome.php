@@ -38,8 +38,9 @@ class Welcome extends CI_Controller {
 	function verEvento(){
 
 		$evento = $_POST['Eventos'];
-		if ($evento== 0){
-			$this ->load -> view ('pagError');
+		if ($evento== 'Nada'){
+			echo "holiwi";
+			$this ->load -> view ('inicioB');
 		}
 		else{
 			$this ->load -> model('consultas');
@@ -67,6 +68,16 @@ class Welcome extends CI_Controller {
 			$data['query'] = $this ->consultas -> climaSegunDia($diaExacto);
 			$this ->load -> view ('PagDia',$data);
 		}
+	}
+
+	function porNacimiento() {
+		$año = $_POST['año'];
+		$this ->load -> model('consultas');
+			$data['año']=$año;
+			$data['query'] = $this ->consultas -> gentePorSuAño($año);
+			$this ->load -> view ('pagViaje',$data);
+		
+
 	}
 
 }

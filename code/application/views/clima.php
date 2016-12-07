@@ -19,7 +19,7 @@
 	
 		echo form_open('welcome/verEvento');
 		$options = array(
-		0=>'Clima',
+		'Nada'=>'Clima',
 		'Rain' => 'Lluvioso',
 		"Fog" => 'Con neblina',
 		'FogRain'  => 'Lluvioso con neblina',
