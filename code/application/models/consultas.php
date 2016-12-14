@@ -28,7 +28,15 @@ class consultas extends CI_Model{
 		$query1 = $this-> db -> query($qry, $año);
 
 		return $query1;
+	}
 
+	function rangoEdadfrom($año1,$año2){
+		$qry = "SELECT DISTINCT bici.station.name from bici.station,bici.trip where bici.station.station_id=bici.trip.from_station_id and bici.station.station_id IN (SELECT bici.station.station_id FROM bici.station WHERE bici.trip.birthyear>? AND bici.trip.birthyear <?);";
+		$query1=  $this-> db -> query($qry, array($año1,$año2));
+		return $query1;
 
 	}
 }
+
+
+
